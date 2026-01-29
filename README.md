@@ -11,16 +11,32 @@ The objective of the analysis is to understand how learners engage with courses 
 
 ---
 
-## Business Questions
+## Business Question
 
-The analysis focuses on the following key questions:
+**How can we increase the number of learners who complete our course?**
 
-- How many learners meaningfully engage with a course after enrolling?
-- How does engagement depth relate to course completion and certification?
-- How long do learners typically remain active after starting a course?
-- How do engagement and retention patterns vary across courses and cohorts?
+### Key Findings
 
-These questions mirror the types of analyses commonly used to evaluate subscription-style digital products.
+- A high proportion of learners activate initially, but relatively few go on to complete courses.
+- Engagement behaviour appears highly skewed, with many learners disengaging early and a smaller group remaining active for long periods.
+- Certification is strongly associated with sustained engagement rather than short bursts of activity.
+- Retention patterns vary meaningfully across courses, suggesting differences in course design or learner intent.
+
+### How the analysis breaks down this question
+
+To answer the core business question, the analysis investigates four specific areas:
+
+1. **How many learners meaningfully engage with a course after enrolling?**  
+   *Impact: Identifies the activation bottleneck and whether the issue is enrolment drop-off or design-related disengagement.*
+
+2. **How does engagement depth relate to course completion and certification?**  
+   *Impact: Reveals whether engagement is predictive of outcomes, helping prioritise interventions on high-intent learners.*
+
+3. **How long do learners typically remain active after starting a course?**  
+   *Impact: Pinpoints critical drop-off windows where learners churn, informing intervention timing.*
+
+4. **How do engagement and retention patterns vary across courses and cohorts?**  
+   *Impact: Highlights which courses over- or under-perform, enabling course-specific improvements.*
 
 ---
 
@@ -42,6 +58,16 @@ The dataset required cleaning and validation before analysis, including type sta
 - GitHub for version control
 
 ---
+
+## Approach & Rigor
+
+**Built with 6 automated data quality checks** to ensure analytical reliability:
+- Row count validation across all layers
+- Key uniqueness verification
+- Null and domain constraint checks
+- Date logic validation
+- Metric sanity checks
+- Retention-specific validation
 
 ## Data Cleaning and Preparation
 
@@ -108,17 +134,6 @@ This table shows survival-style retention for a single course cohort, illustrati
 ![Engagement Bands](screenshots/engagement-bands.png)
 
 Learners with higher sustained engagement show markedly higher certification rates, suggesting a strong relationship between early and ongoing activity and successful outcomes.
-
----
-
-## Key Insights
-
-- A high proportion of learners activate initially, but relatively few go on to complete courses.
-- Engagement behaviour appears highly skewed, with many learners disengaging early and a smaller group remaining active for long periods.
-- Certification is strongly associated with sustained engagement rather than short bursts of activity.
-- Retention patterns vary meaningfully across courses, suggesting differences in course design or learner intent.
-
-These insights are exploratory and intended to inform further investigation rather than serve as definitive conclusions.
 
 ---
 
