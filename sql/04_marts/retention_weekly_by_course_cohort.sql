@@ -7,7 +7,7 @@ WITH base AS (
     r.week_number,
     r.user_id,
     r.is_retained_to_week
-  FROM analytics.fct_user_course_weekly_retention r
+  FROM intermediate.fct_user_course_weekly_retention r
 ),
 cohort_sizes AS (
   -- Cohort size is week 0 population

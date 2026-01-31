@@ -1,5 +1,5 @@
 -- Course dimension: one row per course with derived lifecycle context
-CREATE OR REPLACE VIEW analytics.dim_courses AS
+CREATE OR REPLACE VIEW intermediate.dim_courses AS
 SELECT
   course_id,
 
@@ -18,3 +18,5 @@ SELECT
 FROM stg.stg_course_user_engagement
 WHERE course_id IS NOT NULL
 GROUP BY course_id;
+
+select * from intermediate.dim_courses

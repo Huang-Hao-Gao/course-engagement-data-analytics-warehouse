@@ -1,5 +1,5 @@
 -- Fact: one row per user-course with lifecycle metrics, activation and churn flags
-CREATE OR REPLACE VIEW analytics.fct_user_course_lifecycle AS
+CREATE OR REPLACE VIEW intermediate.fct_user_course_lifecycle AS
 WITH base AS (
   SELECT
     s.user_id,
@@ -27,7 +27,7 @@ WITH base AS (
     c.course_duration_days
 
   FROM stg.stg_course_user_engagement s
-  JOIN analytics.dim_courses c ON c.course_id=s.course_id
+  JOIN intermediate.dim_courses c ON c.course_id=s.course_id
   WHERE s.user_id IS NOT NULL AND s.course_id IS NOT NULL
 ),
 derived AS (
@@ -75,23 +75,17 @@ SELECT
   CASE
     WHEN coalesce(d.is_certified,false)=true THEN 'certified'
     WHEN d.last_event_date IS NULL THEN 'no_activity'
-    WHEN d.start_date IS NOT NULL AND d.last_event_date < d.start_date + 7 THEN 'early_churn'
+    WHEN d.start_date IS NOT NULL AND d.last_event_date < d.start_date + 7 THEN 'churn_within_week_one'
     ELSE 'engaged_no_cert'
   END AS churn_type
 
 FROM derived d;
 
-
--- Lifecycle fact should match staging grain (user-course rows)
-SELECT count(*) FROM stg.stg_course_user_engagement;
-SELECT count(*) FROM analytics.fct_user_course_lifecycle;
-
--- Weekly retention expands rows by (max_weeks+1)
-SELECT count(*) FROM analytics.fct_user_course_weekly_retention;
+select * from intermediate.fct_user_course_lifecycle limit 100;
 
 -- Spot-check a single course’s retention curve
 SELECT cohort_week_start,week_number,avg(is_retained_to_week::int) AS retention_rate
-FROM analytics.fct_user_course_weekly_retention
+FROM intermediate.fct_user_course_weekly_retention
 WHERE course_id='HarvardX/CS50x/2012'
 GROUP BY 1,2
 ORDER BY 1,2;

@@ -236,7 +236,7 @@ This project demonstrates the ability to:
   - `00_admin/` – Schema and setup
   - `01_raw/` – Raw data ingestion
   - `02_staging/` – Cleaning and standardisation
-  - `03_analytics/` – Facts and dimensions
+  - `03_intermediate/` – Facts and dimensions
   - `04_marts/` – Final analytical outputs
   - `99_checks/` – Data quality and sanity checks
 - `screenshots/` – Visual evidence of key outputs

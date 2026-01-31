@@ -10,7 +10,7 @@ WITH base AS (
     coalesce(n_events,0) AS n_events,
     coalesce(n_chapters,0) AS n_chapters,
     coalesce(n_forum_posts,0) AS n_forum_posts
-  FROM analytics.fct_user_course_lifecycle
+  FROM intermediate.fct_user_course_lifecycle
 ),
 banded AS (
   SELECT

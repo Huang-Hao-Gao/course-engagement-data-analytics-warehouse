@@ -1,8 +1,8 @@
 -- Fact: one row per user-course-week for survival-style retention (based on last_event_date)
 -- Interpretation: retained_to_week_n means last_event_date is on/after start_date + 7*n
-CREATE OR REPLACE VIEW analytics.fct_user_course_weekly_retention AS
+CREATE OR REPLACE VIEW intermediate.fct_user_course_weekly_retention AS
 WITH params AS (
-  -- Choose a sensible max horizon for retention curves (edit if you want)
+  -- Choose a sensible max week for retention. if they make it to this week they're most likely going to make it to the end
   SELECT 16::int AS max_weeks
 ),
 cohorts AS (
@@ -15,7 +15,7 @@ cohorts AS (
     -- Cohort bucket: week of start_date (Monday-based in Postgres date_trunc)
     date_trunc('week',f.start_date)::date AS cohort_week_start
 
-  FROM analytics.fct_user_course_lifecycle f
+  FROM intermediate.fct_user_course_lifecycle f
   WHERE f.start_date IS NOT NULL
 ),
 weeks AS (
@@ -46,4 +46,4 @@ SELECT
 
 FROM weeks;
 
-select * from analytics.fct_user_course_weekly_retention limit 10
+select * from intermediate.fct_user_course_weekly_retention limit 500

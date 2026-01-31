@@ -2,7 +2,7 @@
 CREATE OR REPLACE VIEW marts.kpi_summary AS
 WITH base AS (
   SELECT *
-  FROM analytics.fct_user_course_lifecycle
+  FROM intermediate.fct_user_course_lifecycle
 )
 SELECT
   count(*) AS user_course_rows,

@@ -1,5 +1,5 @@
 -- Staging view: standardise names, parse dates, normalise flags, cast metrics safely
-CREATE VIEW stg.stg_course_user_engagement AS
+CREATE OR REPLACE VIEW stg.stg_course_user_engagement AS
 WITH src AS (
   -- Trim whitespace so parsing/casts are reliable
   SELECT
@@ -65,8 +65,7 @@ typed AS (
       ELSE null
     END AS year_of_birth,
     NULLIF(gender_raw,'') AS gender,
-    NULLIF(grade_raw,'') AS grade,
-    NULLIF(roles_raw,'') AS roles,
+    NULLIF(grade_raw,'')::numeric AS grade,
 
     -- Dates: source is M/D/YYYY; parse to date then cast to timestamp (no timezone)
     CASE
@@ -116,4 +115,12 @@ SELECT
   start_time::date AS start_date,
   last_event_time::date AS last_event_date
 FROM typed;
-SELECT * FROM stg.stg_course_user_engagement limit 20
+
+-- Query to show data type of each column
+SELECT
+  column_name,
+  data_type
+FROM information_schema.columns
+WHERE table_schema = 'stg' AND table_name = 'stg_course_user_engagement'
+ORDER BY ordinal_position;
+

@@ -1,5 +1,5 @@
 -- User dimension: one row per user with stable attributes
-CREATE OR REPLACE VIEW analytics.dim_users AS
+CREATE OR REPLACE VIEW intermediate.dim_users AS
 SELECT
   user_id,
 
@@ -13,3 +13,5 @@ SELECT
 FROM stg.stg_course_user_engagement
 WHERE user_id IS NOT NULL
 GROUP BY user_id;
+
+select * from intermediate.dim_users
