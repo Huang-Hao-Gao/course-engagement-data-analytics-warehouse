@@ -50,11 +50,91 @@ The dataset required cleaning and validation before analysis, including type sta
 
 ---
 
+## Getting Started: How to Run This Project
+
+This section explains how to set up and run this analytics warehouse on your own system.
+
+### Prerequisites
+
+- PostgreSQL installed locally ([download here](https://www.postgresql.org/download/))
+- `psql` (PostgreSQL command-line client, included with PostgreSQL)
+- This repository cloned to your machine
+- The `data/raw/Courses.csv` file present in the project
+
+You can execute SQL using `psql` directly, or use any SQL IDE (VS Code, DBeaver, pgAdmin, etc.) that connects to PostgreSQL. Instructions below use `psql` for reproducibility across all platforms.
+
+### Step-by-Step Setup
+
+**1. Install PostgreSQL**
+   - Download and install from [postgresql.org](https://www.postgresql.org/download/)
+   - During installation, you'll create a password for the `postgres` superuser. Remember this
+   - PostgreSQL will run as a local database server on your machine
+
+**2. Connect to PostgreSQL via psql**
+   - Open a terminal/command prompt and run:
+     ```
+     psql -U postgres
+     ```
+   - OR: launch SQL Shell (psql)
+   - Run:
+   ```
+   CREATE DATABASE course_warehouse;
+   ```
+   - Connect to the course_warehouse database
+   - Enter the superuser password when prompted
+   - You should see the PostgreSQL prompt: `course_warehouse=#`
+
+**3. Create schemas** (must be done first)
+   - In the psql prompt, run:
+     ```
+     \i 'C:/path/to/project/sql/00_admin/00_create_schemas.sql'
+     ```
+   - Replace `C:/path/to/project/` with your actual project path
+   - This creates the `raw`, `stg`, `analytics`, and `marts` schemas
+
+**4. Create raw tables** (must be done before data load)
+   - Still in psql, run:
+     ```
+     \i 'C:/path/to/project/sql/01_raw/01_create_raw_tables.sql'
+     ```
+   - This creates the empty `raw.course_user_engagement` table
+
+**5. Load the CSV data** (only step using psql's \copy command)
+   - Still in psql, run:
+     ```
+     \copy raw.course_user_engagement
+     FROM 'C:/path/to/project/data/raw/Courses.csv'
+     DELIMITER ','
+     CSV HEADER;
+     ```
+   - Replace the file path with your actual project path
+   - Note: `\copy` is a psql metacommand and must be run in psql (not a standard SQL statement)
+
+**6. Build the remaining warehouse layers**
+   - Execute all remaining SQL files in this order:
+     - `sql/02_staging/stg_course_user_engagement.sql`
+     - `sql/03_analytics/` (all dimension and fact files)
+     - `sql/04_marts/` (all mart files)
+     - `sql/99_checks/` (all data quality check files)
+   - You can use psql or any SQL IDE. In psql, execute each file with: `\i 'path/to/file.sql'`
+
+### Verifying Success
+
+After all SQL files have been executed, verify the warehouse was built correctly:
+```
+\i 'path/to/project/sql/99_checks/00_smoke_test.sql'
+```
+
+If all checks pass with no errors, your warehouse is successfully built and ready for querying.
+
+---
+
 ## Tools Used
 
-- PostgreSQL
+- PostgreSQL (database engine)
+- psql (command-line client)
 - SQL (CTEs, window functions, cohort logic)
-- VS Code with SQLTools
+- Optional: Any SQL IDE (VS Code, DBeaver, pgAdmin, etc.)
 - GitHub for version control
 
 ---

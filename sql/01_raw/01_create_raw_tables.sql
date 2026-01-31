@@ -1,3 +1,6 @@
+-- Raw data table for course user engagement
+-- See README.md for complete setup and data loading instructions
+
 CREATE TABLE IF NOT EXISTS raw.course_user_engagement (
 index TEXT,
 random TEXT,
