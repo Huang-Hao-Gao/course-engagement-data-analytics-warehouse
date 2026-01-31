@@ -26,7 +26,7 @@ SELECT
 
   cs.cohort_size,
   count(DISTINCT b.user_id) FILTER (WHERE b.is_retained_to_week) AS retained_users,
-  (count(DISTINCT b.user_id) FILTER (WHERE b.is_retained_to_week))::numeric / nullif(cs.cohort_size,0) AS retention_rate
+  round((count(DISTINCT b.user_id) FILTER (WHERE b.is_retained_to_week))::numeric / nullif(cs.cohort_size,0), 3) AS retention_rate
 
 FROM base b
 JOIN cohort_sizes cs

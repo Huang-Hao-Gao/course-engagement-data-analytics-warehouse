@@ -1,4 +1,5 @@
 -- Engagement bands: show how sustained engagement relates to certification and churn
+drop view marts.engagement_bands_and_outcomes;
 CREATE OR REPLACE VIEW marts.engagement_bands_and_outcomes AS
 WITH base AS (
   SELECT
@@ -6,10 +7,7 @@ WITH base AS (
     is_activated,
     coalesce(is_certified,false) AS is_certified,
     is_churned,
-    coalesce(n_days_active,0) AS n_days_active,
-    coalesce(n_events,0) AS n_events,
-    coalesce(n_chapters,0) AS n_chapters,
-    coalesce(n_forum_posts,0) AS n_forum_posts
+    coalesce(n_days_active,0) AS n_days_active
   FROM intermediate.fct_user_course_lifecycle
 ),
 banded AS (
@@ -30,10 +28,7 @@ SELECT
   engagement_band,
   count(*) AS learners,
   avg(is_certified::int)::numeric(10,4) AS certification_rate,
-  avg(is_churned::int)::numeric(10,4) AS churn_rate,
-  avg(n_events)::numeric(12,2) AS avg_events,
-  avg(n_chapters)::numeric(12,2) AS avg_chapters,
-  avg(n_forum_posts)::numeric(12,2) AS avg_forum_posts
+  avg(is_churned::int)::numeric(10,4) AS churn_rate
 FROM banded
 GROUP BY course_id,engagement_band;
 
