@@ -23,6 +23,7 @@ banded AS (
     END AS engagement_band
   FROM base
 )
+
 SELECT
   course_id,
   engagement_band,
@@ -30,9 +31,10 @@ SELECT
   avg(is_certified::int)::numeric(10,4) AS certification_rate,
   avg(is_churned::int)::numeric(10,4) AS churn_rate
 FROM banded
-GROUP BY course_id,engagement_band;
+GROUP BY course_id, engagement_band;
+
 
 
 SELECT *
 FROM marts.engagement_bands_and_outcomes
-ORDER BY engagement_band;
+order by engagement_band desc, certification_rate;
