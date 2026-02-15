@@ -18,8 +18,8 @@ The objective of the analysis is to understand how learners engage with courses 
 ### Key Findings
 
 - A high proportion of learners activate initially (~85%), but relatively few go on to complete courses (~3% certification rate).
-- Engagement behaviour is highly skewed: median active days is 2, and retention drops from 0.967 in Week 0 to 0.537 by Week 2.
-- Certification is strongly associated with sustained engagement: near 0% for 8-14 active days vs 23-73% for 15+ active days.
+- Engagement behaviour is highly skewed: median active days is 2, and retention drops from ~97% in Week 0 to ~54% by Week 2.
+- Certification is strongly associated with sustained engagement: near 0% for 8-14 active days vs ~24-74% for 15+ active days.
 - Retention patterns vary meaningfully across courses, indicating course-specific design or learner-intent effects.
 
 ### Actionable recommendations (data-driven)
@@ -218,7 +218,7 @@ Key metrics:
 ![Weekly Retention](screenshots/weekly-retention.png)
 
 Key metrics:
-- Retention rate drops from 0.967 in Week 0 to 0.537 by Week 2.
+- Retention rate drops from ~97% in Week 0 to ~54% by Week 2, a drop of ~43%
 
 This table shows survival-style retention for a single course cohort, illustrating sharp early drop-off followed by a smaller group of long-running learners.
 
