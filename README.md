@@ -17,26 +17,38 @@ The objective of the analysis is to understand how learners engage with courses 
 
 ### Key Findings
 
-- A high proportion of learners activate initially, but relatively few go on to complete courses.
-- Engagement behaviour appears highly skewed, with many learners disengaging early and a smaller group remaining active for long periods.
-- Certification is strongly associated with sustained engagement rather than short bursts of activity.
-- Retention patterns vary meaningfully across courses, suggesting differences in course design or learner intent.
+- A high proportion of learners activate initially (~85%), but relatively few go on to complete courses (~3% certification rate).
+- Engagement behaviour is highly skewed: median active days is 2, and retention drops from 0.967 in Week 0 to 0.537 by Week 2.
+- Certification is strongly associated with sustained engagement: near 0% for 8-14 active days vs 23-73% for 15+ active days.
+- Retention patterns vary meaningfully across courses, indicating course-specific design or learner-intent effects.
+
+### Actionable recommendations (data-driven)
+
+The largest opportunity is early sustained engagement: activation is ~85%, median active days is 2, and certification is ~3%. Given that students active 15+ days have a ~24%-74% completion rate, the first 2 weeks drive the biggest gains.
+
+- Re-sequence Week 1 so the most rewarding or practical content appears in the first 20% of the course to address early churn.
+- Insert a first 48 hours checklist (3-5 low-friction tasks) to convert high activation (~85%) into early sustained engagement rather than one-and-done activity.
+- At the end of Days 1 and 2, highlight the value and time-to-complete of the next lesson to drive a second and third session.
+- Launch a 14-day momentum streak and communicate that students active 15+ days show ~24%-74% completion vs near 0% below that threshold.
+- Create a momentum streak leaderboard with a small reward (for example, a two-week milestone badge) for learners who keep a full 14-day streak.
+- Add a first week success guide that sets expectations for required time and milestones, reducing early disengagement.
+- Implement a return within 48 hours reminder during Week 1 to sustain the momentum streak in the most fragile period.
 
 ### How the analysis breaks down this question
 
 To answer the core business question, the analysis investigates four specific areas:
 
 1. **How many learners meaningfully engage with a course after enrolling?**  
-   *Impact: Identifies the activation bottleneck and whether the issue is enrolment drop-off or design-related disengagement.*
+   Impact: Identifies the activation bottleneck and whether the issue is enrolment drop-off or design-related disengagement.
 
 2. **How does engagement depth relate to course completion and certification?**  
-   *Impact: Reveals whether engagement is predictive of outcomes, helping prioritise interventions on high-intent learners.*
+   Impact: Reveals whether engagement is predictive of outcomes, helping prioritise interventions on high-intent learners.
 
 3. **How long do learners typically remain active after starting a course?**  
-   *Impact: Pinpoints critical drop-off windows where learners churn, informing intervention timing.*
+   Impact: Pinpoints critical drop-off windows where learners churn, informing intervention timing.
 
 4. **How do engagement and retention patterns vary across courses and cohorts?**  
-   *Impact: Highlights which courses over- or under-perform, enabling course-specific improvements.*
+   Impact: Highlights which courses over- or under-perform, enabling course-specific improvements.
 
 ---
 
@@ -205,6 +217,9 @@ Key metrics:
 
 ![Weekly Retention](screenshots/weekly-retention.png)
 
+Key metrics:
+- Retention rate drops from 0.967 in Week 0 to 0.537 by Week 2.
+
 This table shows survival-style retention for a single course cohort, illustrating sharp early drop-off followed by a smaller group of long-running learners.
 
 ---
@@ -212,6 +227,10 @@ This table shows survival-style retention for a single course cohort, illustrati
 ### Engagement depth vs outcomes
 
 ![Engagement Bands](screenshots/engagement-bands.png)
+
+Key metrics:
+- Certification rate is near 0% for 8-14 active days.
+- Certification rate rises to ~24%-74% for 15+ active days.
 
 Learners with higher sustained engagement show markedly higher certification rates, suggesting a strong relationship between early and ongoing activity and successful outcomes.
 
