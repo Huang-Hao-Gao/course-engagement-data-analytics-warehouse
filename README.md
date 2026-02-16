@@ -6,7 +6,7 @@ This project is a SQL-based analytics case study analysing user engagement, rete
 
 The dataset represents learner activity across multiple online courses, including enrolment dates, engagement metrics, and certification outcomes. The project is framed as simulated internal analytics work for an online education platform similar to Coursera or edX.
 
-The objective of the analysis is to understand how learners engage with courses over time, how long they remain active, and which patterns of behaviour are associated with successful course completion. The project is intended to support learning experience teams in evaluating course performance and learner behaviour.
+The objective of the analysis is to understand how learners engage with courses over time, how long they remain active, and which patterns of behaviour are associated with successful course completion. The project is intended to support learning experience teams in evaluating course performance and learner behaviour to improve course content and structure.
 
 
 ---
@@ -36,7 +36,7 @@ The largest opportunity is early sustained engagement: activation is ~85%, media
 
 ### How the analysis breaks down this question
 
-To answer the core business question, the analysis investigates four specific areas:
+To answer the core business question, the analysis investigates three specific areas:
 
 1. **How many learners meaningfully engage with a course after enrolling?**  
    Impact: Identifies the activation bottleneck and whether the issue is enrolment drop-off or design-related disengagement.
@@ -46,10 +46,6 @@ To answer the core business question, the analysis investigates four specific ar
 
 3. **How long do learners typically remain active after starting a course?**  
    Impact: Pinpoints critical drop-off windows where learners churn, informing intervention timing.
-
-4. **How do engagement and retention patterns vary across courses and cohorts?**  
-   Impact: Highlights which courses over- or under-perform, enabling course-specific improvements.
-
 ---
 
 ## Dataset
@@ -192,8 +188,6 @@ Courses are treated as subscription-like experiences with:
 - an outcome (certified or not)
 
 Retention is measured using a **survival-style approach**, based on how long learners remain active after starting a course. Because the dataset only includes start and last activity dates, retention reflects *engagement longevity* rather than week-by-week activity.
-
-This limitation is explicitly documented and handled conservatively.
 
 ---
 
