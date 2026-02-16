@@ -24,7 +24,7 @@ The objective of the analysis is to understand how learners engage with courses 
 
 ### Actionable recommendations (data-driven)
 
-The largest opportunity is early sustained engagement: activation is ~85%, median active days is 2, and certification is ~3%. Given that students active 15+ days have a ~24%-74% completion rate, the first 2 weeks drive the biggest gains.
+The largest opportunity is early sustained engagement: activation is ~85%, median active days is 2, and certification is ~3%. Given that students active 15+ days have a ~24%-74% completion rate, and ~43% users churn within the first 2 weeks, the initial 2-3 weeks drive the biggest gains.
 
 - Re-sequence Week 1 so the most rewarding or practical content appears in the first 20% of the course to address early churn.
 - Insert a first 48 hours checklist (3-5 low-friction tasks) to convert high activation (~85%) into early sustained engagement rather than one-and-done activity.
